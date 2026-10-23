@@ -8,50 +8,6 @@
   <meta name="description" content="Pre-Jerk Theory: an unofficial field doctrine of timing, readiness, and the pursuit of relief.">
   <title>Pre-Jerk Theory — Field Manual 001</title>
   <link rel="stylesheet" href="https://unpkg.com/lenis@1.3.27/dist/lenis.css">
-  
-<div class="language-screen">
-
-  <h1>PRE-JERK THEORY</h1>
-  <p class="subtitle">FIELD MANUAL // UNOFFICIAL DOCTRINE</p>
-
-  <div class="language-disclaimer">
-    <h3>DISCLAIMER / AVERTISSEMENT</h3>
-
-    <p>
-      <strong>English</strong><br>
-      Pre-Jerk Theory is an independent satirical project
-      inspired by personal experiences and military-style humour.
-      It is not affiliated with or endorsed by the Canadian Armed
-      Forces (CAF), the Department of National Defence (DND),
-      or the Government of Canada.
-    </p>
-
-    <p>
-      <strong>Français</strong><br>
-      Pre-Jerk Theory est un projet satirique indépendant inspiré
-      d’expériences personnelles et d’un humour de style militaire.
-      Il n’est ni affilié aux Forces armées canadiennes (FAC), ni
-      approuvé par celles-ci, le ministère de la Défense nationale
-      (MDN) ou le gouvernement du Canada.
-    </p>
-  </div>
-
-  <p class="language-prompt">
-    SELECT YOUR LANGUAGE / CHOISISSEZ VOTRE LANGUE
-  </p>
-
-  <div class="language-buttons">
-    <button type="button" onclick="setLanguage('en')">
-      🇬🇧 English
-    </button>
-
-    <button type="button" onclick="setLanguage('fr')">
-      🇫🇷 Français
-    </button>
-  </div>
-
-</div>
-
   <style>
     :root {
       --bg: #171d17;
@@ -269,6 +225,92 @@
       font-size: .85rem;
     }
 
+    #language-gate {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: grid;
+      place-items: center;
+      overflow-y: auto;
+      padding: 24px;
+      background: rgba(23, 29, 23, .98);
+    }
+
+    .gate-panel {
+      width: min(680px, 100%);
+      max-height: 100%;
+      overflow-y: auto;
+      padding: clamp(22px, 5vw, 40px);
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: var(--panel);
+    }
+
+    .gate-panel h1 {
+      margin: 14px 0 4px -1px;
+      font-size: clamp(2rem, 8vw, 3.2rem);
+      letter-spacing: -1px;
+    }
+
+    .gate-subtitle {
+      margin: 0 0 22px;
+      font-size: .78rem;
+      letter-spacing: 1px;
+    }
+
+    .language-disclaimer {
+      padding: 16px 18px;
+      border: 1px solid var(--line);
+      border-radius: 4px;
+      background: #1b221b;
+    }
+
+    .language-disclaimer h2 {
+      margin: 0 0 12px;
+      font-size: 1rem;
+      letter-spacing: 1px;
+    }
+
+    .language-disclaimer p {
+      margin: 0;
+      font-size: .88rem;
+      line-height: 1.5;
+    }
+
+    .language-disclaimer p + p { margin-top: 22px; }
+
+    .language-prompt {
+      margin: 22px 0 12px;
+      font-size: .78rem;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+
+    .language-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .language-buttons button {
+      min-height: 44px;
+      padding: 10px 18px;
+      border: 1px solid var(--olive);
+      border-radius: 3px;
+      background: var(--olive);
+      color: #1b2419;
+      font: inherit;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .language-buttons button:hover,
+    .language-buttons button:focus-visible {
+      outline: 2px solid var(--cream);
+      outline-offset: 2px;
+    }
+
     @media (max-width: 700px) {
       .grid { grid-template-columns: 1fr; }
       .hero { padding: 70px 0; }
@@ -279,9 +321,23 @@
 </head>
 
 <body>
-<div id="language-gate" role="dialog" aria-modal="true" aria-labelledby="gate-title">
+<div id="language-gate" role="dialog" aria-modal="true" aria-labelledby="gate-heading">
   <div class="gate-panel">
-    <div class="eyebrow" id="gate-title">LANGUAGE / LANGUE</div>
+    <div class="eyebrow">FIELD MANUAL // UNOFFICIAL DOCTRINE</div>
+    <h1 id="gate-heading">PRE-JERK THEORY</h1>
+    <div class="language-disclaimer">
+      <h2>DISCLAIMER / AVERTISSEMENT</h2>
+      <p>
+        Pre-Jerk Theory is an independent satirical project inspired by personal experiences and military-style humour.
+        It is not affiliated with or endorsed by the Canadian Armed Forces (CAF), the Department of National Defence
+        (DND), or the Government of Canada.
+      </p>
+      <p>
+        Pre-Jerk Theory est un projet satirique indépendant inspiré d’expériences personnelles et d’un humour de style militaire.
+        Il n’est ni affilié aux Forces armées canadiennes (FAC), ni approuvé par celles-ci, le ministère de la Défense nationale
+        (MDN) ou le gouvernement du Canada.
+      </p>
+    </div>
     <div class="language-buttons">
       <button type="button" onclick="setLanguage('en')">English</button>
       <button type="button" onclick="setLanguage('fr')">Français</button>
@@ -452,7 +508,7 @@
 
 
 <script>
-const translations = {"Unofficial doctrine · Field manual 001": "Doctrine non officielle · Manuel de campagne 001", "FOUNDATIONS": "FONDEMENTS", "FIVE LAWS": "CINQ LOIS", "MANIFESTO": "MANIFESTE", "QUOTES": "CITATIONS", "Preemptively, empty the balls.": "Mieux vaut vider les bourses d’avance.", "A field-born theory of opportunity, preparedness, and\n        the pursuit of relief in an unpredictable world.": "Une théorie née sur le terrain, portant sur les occasions, la préparation et\n        la recherche du soulagement dans un monde imprévisible.", "Hope for downtime. Prepare for no downtime.": "Espérez avoir du temps libre. Préparez-vous à ne pas en avoir.", "READ THE DOCTRINE ↓": "LIRE LA DOCTRINE ↓", "EXPLORE THE QUOTES": "DÉCOUVRIR LES CITATIONS", "The founding principle": "Le principe fondateur", "Opportunity is temporary. Regret is optional.": "L’occasion est passagère. Le regret est facultatif.", "Inspired by a Canadian soldier's personal deployment\n        experience, Pre-Jerk Theory examines an ordinary human\n        need under extraordinary scheduling constraints.\n        The premise: never assume free time will be available\n        when you want it.": "Inspirée de l’expérience personnelle d’un militaire canadien en déploiement,\n        la théorie du soulagement préventif examine un besoin humain ordinaire\n        dans un contexte d’horaires extraordinaires.\n        Le principe : ne tenez jamais pour acquis que vous aurez du temps libre\n        au moment où vous le souhaitez.", "01 / TIMING": "01 / MOMENT OPPORTUN", "The Window of Opportunity": "La fenêtre d’occasion", "Never confuse having time later with having time at all.": "Ne confondez jamais avoir du temps plus tard et avoir du temps tout court.", "Recognize that free time is uncertain.": "Reconnaissez que le temps libre est incertain.", "02 / READINESS": "02 / PRÉPARATION", "The Prepared Mindset": "L’esprit préparé", "Recognize a feasible opportunity when it appears.": "Sachez reconnaître une occasion réalisable lorsqu’elle se présente.", "03 / DISCRETION": "03 / DISCRÉTION", "The Private Domain": "La sphère privée", "Personal matters remain personal.": "Les affaires personnelles restent personnelles.", "Respect privacy, other people, and operational responsibilities.": "Respectez la vie privée, les autres et les responsabilités opérationnelles.", "Core doctrine": "Doctrine fondamentale", "The Five Laws": "Les cinq lois", "LAW I": "LOI I", "The Law of Uncertainty": "La loi de l’incertitude", "The future promises nothing, especially privacy and free time.": "L’avenir ne promet rien, surtout pas de l’intimité ni du temps libre.", "LAW II": "LOI II", "The Law of Opportunity": "La loi de l’occasion", "An opportunity unused is a comfort postponed indefinitely.": "Une occasion manquée, c’est un soulagement remis à une date indéterminée.", "LAW III": "LOI III", "The Law of Preparedness": "La loi de la préparation", "The wise man acts when conditions permit, not when desire demands.": "La personne avisée agit quand les conditions le permettent, et non quand le désir l’exige.", "LAW IV": "LOI IV", "The Law of Contrast": "La loi du contraste", "Relief is best understood by those who have been denied it.": "Ceux à qui le soulagement a été refusé le comprennent le mieux.", "LAW V": "LOI V", "The Law of Preemption": "La loi de l’anticipation", "Never postpone a feasible pleasure to an uncertain future.": "Ne remettez jamais un plaisir possible à un avenir incertain.", "The official manifesto": "Le manifeste officiel", "Time is uncertain. Opportunity is finite. Relief is precious.": "Le temps est incertain. Les occasions sont limitées. Le soulagement est précieux.", "We live in a world of unpredictable schedules, extended\n        obligations, and responsibilities that rarely ask permission\n        before taking over our lives.": "Nous vivons dans un monde d’horaires imprévisibles, d’obligations prolongées\n        et de responsabilités qui demandent rarement la permission\n        avant d’envahir nos vies.", "Pre-Jerk Theory emerged from the experience of a Canadian\n        soldier who learned that a free moment today does not guarantee\n        a free moment tomorrow.": "La théorie du soulagement préventif est née de l’expérience d’un militaire\n        canadien qui a appris qu’un moment libre aujourd’hui ne garantit\n        pas un moment libre demain.", "Its proposition is simple: recognize opportunity, understand\n        your circumstances, and do not take the availability of\n        personal time for granted.": "Sa proposition est simple : reconnaissez les occasions, comprenez\n        votre situation et ne tenez pas la disponibilité de\n        temps personnel pour acquise.", "The premise is humorous. The underlying principle is universal.": "Le principe est humoristique. L’idée sous-jacente est universelle.", "End of doctrine. Proceed with discretion.": "Fin de la doctrine. Faites preuve de discrétion.", "The quote collection": "La collection de citations", "Some Takeaways": "Quelques leçons à retenir", "The collection of unofficial field-issued slogans.": "Une collection de slogans officieux issus du terrain.", "An unofficial satirical project inspired by personal experience.\n      Not affiliated with or endorsed by the Canadian Armed Forces.": "Un projet satirique non officiel inspiré d’une expérience personnelle.\n      Non affilié aux Forces armées canadiennes et non approuvé par celles-ci.", "© ": "© ", "Pre-Jerk Theory": "Théorie du soulagement préventif"};
+const translations = {"Unofficial doctrine · Field manual 001": "Doctrine non officielle · Manuel de campagne 001", "FOUNDATIONS": "FONDEMENTS", "FIVE LAWS": "CINQ LOIS", "MANIFESTO": "MANIFESTE", "QUOTES": "CITATIONS", "Preemptively, empty the balls.": "Mieux vaut vider les bourses d’avance.", "A field-born theory of opportunity, preparedness, and\n        the pursuit of relief in an unpredictable world.": "Une théorie née sur le terrain, portant sur les occasions, la préparation et\n        la recherche du soulagement dans un monde imprévisible.", "Hope for downtime. Prepare for no downtime.": "Espérez avoir du temps libre. Préparez-vous à ne pas en avoir.", "READ THE DOCTRINE ↓": "LIRE LA DOCTRINE ↓", "EXPLORE THE QUOTES": "DÉCOUVRIR LES CITATIONS", "The founding principle": "Le principe fondateur", "Opportunity is temporary. Regret is optional.": "L’occasion est passagère. Le regret est facultatif.", "Inspired by a Canadian soldier's personal deployment\n        experience, Pre-Jerk Theory examines an ordinary human\n        need under extraordinary scheduling constraints.\n        The premise: never assume free time will be available\n        when you want it.": "Inspirée de l’expérience personnelle d’un militaire canadien en déploiement,\n        la théorie du soulagement préventif examine un besoin humain ordinaire\n        dans un contexte d’horaires extraordinaires.\n        Le principe : ne tenez jamais pour acquis que vous aurez du temps libre\n        au moment où vous le souhaitez.", "01 / TIMING": "01 / MOMENT OPPORTUN", "The Window of Opportunity": "La fenêtre d’occasion", "Never confuse having time later with having time at all.": "Ne confondez jamais avoir du temps plus tard et avoir du temps tout court.", "Recognize that free time is uncertain.": "Reconnaissez que le temps libre est incertain.", "02 / READINESS": "02 / PRÉPARATION", "The Prepared Mindset": "L’esprit préparé", "Recognize a feasible opportunity when it appears.": "Sachez reconnaître une occasion réalisable lorsqu’elle se présente.", "03 / DISCRETION": "03 / DISCRÉTION", "The Private Domain": "La sphère privée", "Personal matters remain personal.": "Les affaires personnelles restent personnelles.", "Respect privacy, other people, and operational responsibilities.": "Respectez la vie privée, les autres et les responsabilités opérationnelles.", "Core doctrine": "Doctrine fondamentale", "The Five Laws": "Les cinq lois", "LAW I": "LOI I", "The Law of Uncertainty": "La loi de l’incertitude", "The future promises nothing, especially privacy and free time.": "L’avenir ne promet rien, surtout pas de l’intimité ni du temps libre.", "LAW II": "LOI II", "The Law of Opportunity": "La loi de l’occasion", "An opportunity unused is a comfort postponed indefinitely.": "Une occasion manquée, c’est un soulagement remis à une date indéterminée.", "LAW III": "LOI III", "The Law of Preparedness": "La loi de la préparation", "The wise man acts when conditions permit, not when desire demands.": "La personne avisée agit quand les conditions le permettent, et non quand le désir l’exige.", "LAW IV": "LOI IV", "The Law of Contrast": "La loi du contraste", "Relief is best understood by those who have been denied it.": "Ceux à qui le soulagement a été refusé le comprennent le mieux.", "LAW V": "LOI V", "The Law of Preemption": "La loi de l’anticipation", "Never postpone a feasible pleasure to an uncertain future.": "Ne remettez jamais un plaisir possible à un avenir incertain.", "The official manifesto": "Le manifeste officiel", "Time is uncertain. Opportunity is finite. Relief is precious.": "Le temps est incertain. Les occasions sont limitées. Le soulagement est précieux.", "We live in a world of unpredictable schedules, extended\n        obligations, and responsibilities that rarely ask permission\n        before taking over our lives.": "Nous vivons dans un monde d’horaires imprévisibles, d’obligations prolongées\n        et de responsabilités qui demandent rarement la permission\n        avant d’envahir nos vies.", "Pre-Jerk Theory emerged from the experience of a Canadian\n        soldier who learned that a free moment today does not guarantee\n        a free moment tomorrow.": "La théorie du soulagement préventif est née de l’expérience d’un militaire\n        canadien qui a appris qu’un moment libre aujourd’hui ne garantit\n        pas un moment libre demain.", "Its proposition is simple: recognize opportunity, understand\n        your circumstances, and do not take the availability of\n        personal time for granted.": "Sa proposition est simple : reconnaissez les occasions, comprenez\n        votre situation et ne tenez pas la disponibilité de\n        temps personnel pour acquise.", "The premise is humorous. The underlying principle is universal.": "Le principe est humoristique. L’idée sous-jacente est universelle.", "End of doctrine. Proceed with discretion.": "Fin de la doctrine. Faites preuve de discrétion.", "The quote collection": "La collection de citations", "Some Takeaways": "Quelques leçons à retenir", "The collection of unofficial field-issued slogans.": "Une collection de slogans officieux issus du terrain.", "An unofficial satirical project inspired by personal experience.\n      Not affiliated with or endorsed by the Canadian Armed Forces.": "Un projet satirique non officiel inspiré d’une expérience personnelle.\n      Non affilié aux Forces armées canadiennes et non approuvé par celles-ci.", "© ": "© ", "Pre-Jerk Theory · End of transmission.": "Théorie du soulagement préventif · Fin de transmission."};
 const originalSlogans = [
   "Mission first. Blue balls never.",
   "No opportunity left behind.",
